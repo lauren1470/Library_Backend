@@ -13,8 +13,10 @@ CREATE TABLE Books (
 INSERT INTO Books (title, author, publisher, isbn, publication_year, genre, available, price)
 VALUES
 ('1984', 'George Orwell', 'Secker & Warburg', '9780451524935', 1949, 'Dystopian', 1, 9.99),
-('The Great Gatsby', 'F. Scott Fitzgerald', 'Scribner', '9780743273565', 1925, 'Fiction', 1, 10.99),
-('To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott & Co.', '9780061120084', 1960, 'Fiction', 1, 7.99);
+('The Hobbit', 'J.R.R. Tolkien', 'George Allen & Unwin', '9780261102217', 1937, 'Fantasy', 1, 12.50),
+('To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott & Co.', '9780061120084', 1960, 'Classic', 1, 8.99),
+('The Martian', 'Andy Weir', 'Crown Publishing', '9780804139021', 2011, 'Science Fiction', 1, 10.99),
+('Atomic Habits', 'James Clear', 'Avery', '9780735211292', 2018, 'Self-help', 1, 16.20);
 
 
 CREATE TABLE Members (
@@ -29,12 +31,11 @@ CREATE TABLE Members (
 
 INSERT INTO Members (first_name, last_name, address, phone, email, register_date)
 VALUES
-('lauren', 'obrien', '20a main street', '07776835699', 'lauren.obrien@kainos.com', '2025-16-06'),
-('Lena', 'Morris', '42 Elm Street, London', '07911 345678', 'lena.morris@example.com', '2025-04-21'),
-('Dylan', 'Sharma', '88 King’s Avenue, Birmingham', '07488 223344', 'dylan.sharma@example.com', '2025-06-05'),
-('Priya', 'Nguyen', '17 Baker Road, Manchester', '07777 987654', 'priya.nguyen@example.com', '2025-05-11'),
-('Ethan', 'Okafor', '29 Park Lane, Leeds', '07123 456789', 'ethan.okafor@example.com', '2025-03-18'),
-('Chloe', 'Davies', '10 Queen Street, Bristol', '07555 112233', 'chloe.davies@example.com', '2025-01-29');
+('Alice', 'Johnson', '123 Maple Street, Belfast', '07700 123456', 'alice.johnson@example.com', '2025-06-01'),
+('Ben', 'Lee', '456 Oak Road, Derry', '07700 654321', 'ben.lee@example.com', '2025-06-02'),
+('Carla', 'Nguyen', '789 Birch Ave, Armagh', '07700 112233', 'carla.nguyen@example.com', '2025-06-03'),
+('David', 'Patel', '321 Cedar St, Lisburn', '07700 334455', 'david.patel@example.com', '2025-06-04'),
+('Ella', 'OBrien', '159 Willow Lane, Newry', '07700 778899', 'ella.obrien@example.com', '2025-06-05');
 
 CREATE TABLE Loans (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,22 +49,11 @@ CREATE TABLE Loans (
 
 INSERT INTO Loans (member_id, book_id, loan_date, return_date)
 VALUES
--- Member 1 borrows Book 1 and Book 2
-(1, 1, '2025-06-01', '2025-06-10'),
-(1, 2, '2025-06-02', NULL),
-
--- Member 2 borrows Book 1 and Book 3
-(2, 1, '2025-06-03', NULL),
-(2, 3, '2025-06-04', '2025-06-15'),
-
--- Member 3 borrows Book 4
-(3, 4, '2025-06-05', NULL),
-
--- Member 4 borrows Book 5
-(4, 5, '2025-06-06', NULL),
-
--- Member 5 borrows Book 2 (already borrowed by Member 1 as well)
-(5, 2, '2025-06-07', '2025-06-14');
+(1, 1, '2025-06-06', NULL),
+(2, 2, '2025-06-07', '2025-06-14'),
+(3, 3, '2025-06-08', NULL),
+(4, 4, '2025-06-09', NULL),
+(5, 5, '2025-06-10', '2025-06-17');
 
 --Write a query that returns all members with a comma-seperated list of the books they have loaned
 SELECT
