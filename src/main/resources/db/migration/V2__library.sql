@@ -205,8 +205,8 @@ WHERE return_date IS NOT NULL
 
 
 --CREATE INDEX idx_genre ON Books(genre);
-  CREATE INDEX idx_author ON Books(author);
-  CREATE INDEX idx_publisher ON Books(publisher);
+ CREATE INDEX idx_author ON Books(author);
+ CREATE INDEX idx_publisher ON Books(publisher);
 
 --Add a unique index to the email column to prevent incorrect data entry
 CREATE UNIQUE INDEX idx_email_unique ON Members(email);
