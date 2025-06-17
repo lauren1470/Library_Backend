@@ -55,7 +55,6 @@ VALUES
 (4, 4, '2025-06-09', NULL),
 (5, 5, '2025-06-10', '2025-06-17');
 
---Write a query that returns all members with a comma-seperated list of the books they have loaned
 SELECT
     m.id AS member_id,
     CONCAT(m.first_name, ' ', m.last_name) AS member_name,
@@ -69,7 +68,7 @@ JOIN
 GROUP BY
     m.id, m.first_name, m.last_name;
 
---Write a query that returns members who have loaned books that have not been returned yet and a comma-seperated list of the books
+
 SELECT
     m.id AS member_id,
     CONCAT(m.first_name, ' ', m.last_name) AS member_name,
@@ -85,7 +84,7 @@ WHERE
 GROUP BY
     m.id, m.first_name, m.last_name;
 
---Write a query that returns the name of the publisher who has loaned the most books this year and how many
+
 SELECT
     b.publisher,
     COUNT(*) AS total_loans
@@ -101,7 +100,7 @@ ORDER BY
     total_loans DESC
 LIMIT 1;
 
---Write a query that returns the name of the author who has loaned the least books this year and how many
+
 SELECT
     b.author,
     COUNT(*) AS total_loans
@@ -117,7 +116,7 @@ ORDER BY
     total_loans ASC
 LIMIT 1;
 
---Write a query that returns the name of all books with a column that says 'Available' if the book is available and 'Unavailable' if the book is not available
+
 SELECT
     title,
     CASE
@@ -127,7 +126,7 @@ SELECT
 FROM
     Books;
 
---Write a query that returns all book genre's with a count of how many books each genre has
+
 SELECT
     genre,
     COUNT(*) AS book_count
@@ -139,8 +138,7 @@ ORDER BY
     book_count DESC;
 
 
---Write a query that returns all books that have not been loaned and all members who have not loaned any books
--- Books never loaned
+
 SELECT
     b.title AS name,
     'Book' AS type
@@ -153,7 +151,7 @@ WHERE
 
 UNION
 
--- Members who never borrowed a book
+
 SELECT
     CONCAT(m.first_name, ' ', m.last_name) AS name,
     'Member' AS type
@@ -165,7 +163,7 @@ WHERE
     l.id IS NULL;
 
 
---Write a query that returns the average price of books published last year that have been loaned
+
 SELECT
     AVG(b.price) AS average_price
 FROM
@@ -173,14 +171,14 @@ FROM
 JOIN
     Loans l ON b.id = l.book_id
 WHERE
-    b.publication_year = YEAR(CURATE()) - 1;
+    b.publication_year = YEAR(CURDATE()) - 1;
 
---Update the price of all books older than 5 years old to reduce the price by 20%
+
 UPDATE Books
 SET price = price * 0.8
-WHERE publication_year < YEAR(CURATE()) - 5;
+WHERE publication_year < YEAR(CURDATE()) - 5;
 
---Update the first name of all members to be upper case
+
 UPDATE Members
 SET first_name = UPPER(first_name);
 
@@ -188,17 +186,17 @@ UPDATE Members
 SET first_name = CONCAT(UPPER(LEFT(first_name, 1)), LOWER(SUBSTRING(first_name, 2)));
 
 
---Delete loans where the book was returned more that 1 month ago
+
 DELETE FROM Loans
 WHERE return_date IS NOT NULL
-  AND return_date < CURATE() - INTERVAL 1 MONTH;
+  AND return_date < CURDATE() - INTERVAL 1 MONTH;
 
 
---CREATE INDEX idx_genre ON Books(genre);
+
 CREATE INDEX idx_author ON Books(author);
 CREATE INDEX idx_publisher ON Books(publisher);
 
---Add a unique index to the email column to prevent incorrect data entry
+
 CREATE UNIQUE INDEX idx_email_unique ON Members(email);
 
 
