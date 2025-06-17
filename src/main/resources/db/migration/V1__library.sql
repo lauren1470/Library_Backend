@@ -1,14 +1,14 @@
 CREATE TABLE Books (
-   id INT AUTO_INCREMENT PRIMARY KEY
-   title VARCHAR(255) NOT NULL
-   author VARCHAR(255) NOT NULL
-   publisher VARCHAR(255) NOT NULL
-   isbn VARCHAR(255) NOT NULL
-   publication_year YEAR NOT NULL
-   genre VARCHAR(255) NOT NULL
-   available TINYINT(1) NOT NULL DEFAULT 1
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   title VARCHAR(255) NOT NULL,
+   author VARCHAR(255) NOT NULL,
+   publisher VARCHAR(255) NOT NULL,
+   isbn VARCHAR(255) NOT NULL,
+   publication_year YEAR NOT NULL,
+   genre VARCHAR(255) NOT NULL,
+   available TINYINT(1) NOT NULL DEFAULT 1,
    price DECIMAL(10,2) NOT NULL
-    )
+    );
 
 INSERT INTO Books (title, author, publisher, isbn, publication_year, genre, available, price)
 VALUES
@@ -18,18 +18,18 @@ VALUES
 
 
 CREATE TABLE Members (
-    id INT AUTO_INCREMENT PRIMARY KEY
-    first_name VARCHAR(255) NOT NULL
-    last_name VARCHAR(255) NOT NULL
-    address VARCHAR(255) NOT NULL
-    phone VARCHAR(255) NOT NULL
-    email VARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     register_date DATE NOT NULL
-    )
+    );
 
 INSERT INTO Members (first_name, last_name, address, phone, email, register_date)
 VALUES
-('lauren', 'o\'brien', '20a main street', '07776835699' 'lauren.o\'brien@kainos.com', '16/06/2025'),
+('lauren', 'obrien', '20a main street', '07776835699' 'lauren.obrien@kainos.com', '16/06/2025'),
 ('Lena', 'Morris', '42 Elm Street, London', '07911 345678', 'lena.morris@example.com', '2025-04-21'),
 ('Dylan', 'Sharma', '88 King’s Avenue, Birmingham', '07488 223344', 'dylan.sharma@example.com', '2025-06-05'),
 ('Priya', 'Nguyen', '17 Baker Road, Manchester', '07777 987654', 'priya.nguyen@example.com', '2025-05-11'),
@@ -183,12 +183,12 @@ FROM
 JOIN
     Loans l ON b.id = l.book_id
 WHERE
-    b.publication_year = YEAR(CURDATE()) - 1;
+    b.publication_year = YEAR(CURATE()) - 1;
 
 --Update the price of all books older than 5 years old to reduce the price by 20%
 UPDATE Books
 SET price = price * 0.8
-WHERE publication_year < YEAR(CURDATE()) - 5;
+WHERE publication_year < YEAR(CURATE()) - 5;
 
 --Update the first name of all members to be upper case
 UPDATE Members
@@ -201,7 +201,7 @@ SET first_name = CONCAT(UPPER(LEFT(first_name, 1)), LOWER(SUBSTRING(first_name, 
 --Delete loans where the book was returned more that 1 month ago
 DELETE FROM Loans
 WHERE return_date IS NOT NULL
-  AND return_date < CURDATE() - INTERVAL 1 MONTH;
+  AND return_date < CURATE() - INTERVAL 1 MONTH;
 
 
 --CREATE INDEX idx_genre ON Books(genre);
