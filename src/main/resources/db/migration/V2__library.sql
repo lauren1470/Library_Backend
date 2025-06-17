@@ -29,7 +29,7 @@ CREATE TABLE Members (
 
 INSERT INTO Members (first_name, last_name, address, phone, email, register_date)
 VALUES
-('lauren', 'obrien', '20a main street', '07776835699', 'lauren.obrien@kainos.com', '16-06-2025'),
+('lauren', 'obrien', '20a main street', '07776835699', 'lauren.obrien@kainos.com', '2025-16-06'),
 ('Lena', 'Morris', '42 Elm Street, London', '07911 345678', 'lena.morris@example.com', '2025-04-21'),
 ('Dylan', 'Sharma', '88 King’s Avenue, Birmingham', '07488 223344', 'dylan.sharma@example.com', '2025-06-05'),
 ('Priya', 'Nguyen', '17 Baker Road, Manchester', '07777 987654', 'priya.nguyen@example.com', '2025-05-11'),
