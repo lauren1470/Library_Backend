@@ -1,4 +1,4 @@
-# Java DropWizard Flyway Starter
+# Java DropWizard Flyway Starter test
 
 Database Migration - Local
 ---
