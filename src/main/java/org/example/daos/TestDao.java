@@ -18,6 +18,7 @@ public class TestDao {
                     "SHOW DATABASES;");
 
             System.out.println("Retrieving database names");
+            System.out.println("Hello world");
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("Database"));
                 databases.add(resultSet.getString("Database"));
